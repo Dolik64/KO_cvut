@@ -1,0 +1,748 @@
+Papers diagnostika | 2026-10-25T11:31:43.671797+01:00
+Report: /home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/papers_diagnostika_20261025_113143_671681.txt
+PDF slozka: /home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO
+Rezim: rucni potvrzeni zobrazeni
+Bez zmen nastaveni. Neupravuj dokumenty: testovaci okna budou automaticky ukoncena.
+Zaznam obsahuje cesty, technicke parametry a relevantni systemove logy; obsah PDF se nezapisuje.
+
+$ uname -a
+exit=0, doba=0.002 s
+Linux pop-os 7.2.6-76070206-generic #202609141300~1792433904~24.04~141c6f5 SMP PREEMPT_DYNAMIC Mon O x86_64 x86_64 x86_64 GNU/Linux
+
+
+$ flatpak --version
+exit=0, doba=0.013 s
+Flatpak 1.18.1
+
+
+$ flatpak info org.gnome.Papers
+exit=0, doba=0.020 s
+
+Document Viewer - Read documents
+
+            ID: org.gnome.Papers
+           Ref: app/org.gnome.Papers/x86_64/stable
+          Arch: x86_64
+        Branch: stable
+       Version: 51.1
+       License: GPL-2.0-or-later
+        Origin: flathub
+    Collection: org.flathub.Stable
+  Installation: user
+Installed Size: 34.7 MB
+       Runtime: org.gnome.Platform/x86_64/51
+           Sdk: org.gnome.Sdk/x86_64/51
+
+        Commit: c2ae1082343f6c4221fdcc515101c1dafabce5303b1ec066761c308014b152ef
+        Parent: dee8c261c19ed25ca1e959e8cebd1d3c1dd3889e7acca56677249e741effb53c
+       Subject: Update poppler and papers modules (c9ea9ea0f7a3)
+          Date: 2026-10-15 23:11:52 +0000
+
+
+$ flatpak override --user --show org.gnome.Papers
+exit=0, doba=0.017 s
+[Environment]
+GTK_IM_MODULE=gtk-im-context-simple
+GSK_RENDERER=gl
+
+
+$ flatpak override --system --show org.gnome.Papers
+exit=0, doba=0.017 s
+
+
+$ flatpak run --command=gsettings org.gnome.Papers get org.gnome.Papers page-cache-size
+exit=0, doba=0.092 s
+uint32 200
+
+
+$ xdg-mime query default application/pdf
+exit=0, doba=0.021 s
+org.gnome.Papers.desktop
+
+
+$ free -h
+exit=0, doba=0.003 s
+               total        used        free      shared  buff/cache   available
+Mem:            14Gi        11Gi       1.3Gi       333Mi       3.3Gi       3.2Gi
+Swap:           14Gi       1.4Gi        13Gi
+
+
+$ vmstat 1 3
+exit=0, doba=2.006 s
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 6  1 1425556 1384708 385652 3084992    3   19    72   232 2572    5  3  1 90  6  0  0
+ 0  1 1402680 1315904 385860 3088872 22060    0 25220  1996 27872 30212 12  5 78  4  0  0
+ 1  1 1402652 1316924 385860 3088884   20    0    20     0 12141 13224  3  2 90  5  0  0
+
+
+Nejvetsi procesy:
+    PID COMMAND           RSS %CPU
+   5953 Isolated Web Co 1550600 4.2
+   5676 firefox-bin     840736 3.8
+  49076 Isolated Web Co 597000 0.8
+  28925 Isolated Web Co 584772 1.7
+   7196 Discord         487408 0.5
+  11077 Isolated Web Co 453388 0.3
+  21271 code            430316 0.1
+  45213 code            365048 0.0
+  21418 code            304140 0.0
+   8042 Isolated Web Co 274748 0.0
+   3747 cosmic-comp     259908 2.6
+   7059 Discord         246380 0.1
+  21182 code            228696 0.0
+  57755 simplenote      205232 1.4
+  70908 Isolated Web Co 193424 0.1
+   5870 Privileged Cont 188928 0.0
+  57585 simplenote      184992 0.0
+   7126 Discord         176884 0.1
+  21239 code            173632 0.0
+XDG_SESSION_TYPE=wayland
+XDG_CURRENT_DESKTOP=COSMIC
+GTK_IM_MODULE=ibus
+GSK_RENDERER=<nenastaveno>
+GDK_BACKEND=wayland,x11
+/proc/pressure/memory
+some avg10=0.08 avg60=0.02 avg300=0.00 total=2087142
+full avg10=0.08 avg60=0.02 avg300=0.00 total=2076297
+
+/proc/pressure/io
+some avg10=43.49 avg60=46.04 avg300=44.26 total=21717029680
+full avg10=37.88 avg60=44.30 avg300=43.53 total=20794385121
+
+
+$ nvidia-smi --query-gpu=name,driver_version,memory.used,utilization.gpu --format=csv
+exit=0, doba=1.914 s
+name, driver_version, memory.used [MiB], utilization.gpu [%]
+NVIDIA GeForce RTX 4050 Laptop GPU, 595.104.02, 2 MiB, 11 %
+
+
+PDF /home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf | 7674987 bytes
+pdfinfo: exit=0, 0.013 s
+Pages:           1
+Encrypted:       no
+Page size:       1218.48 x 18568.5 pts
+Page rot:        0
+File size:       7674987 bytes
+PDF version:     1.3
+
+$ pdftoppm -f 1 -l 1 -singlefile -scale-to 1600 '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf' /tmp/papers_render_m_33yob5/page
+exit=0, doba=0.745 s
+
+Test pouze prvni stranky hostitelskym Popplerem; verze muze byt jina nez ve Flatpaku.
+
+PDF /home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf | 143737 bytes
+pdfinfo: exit=0, 0.011 s
+Pages:           3
+Encrypted:       no
+Page size:       595.276 x 841.89 pts (A4)
+Page rot:        0
+File size:       143737 bytes
+PDF version:     1.5
+
+$ pdftoppm -f 1 -l 1 -singlefile -scale-to 1600 '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf' /tmp/papers_render_rw4p9m2h/page
+exit=0, doba=0.025 s
+
+Test pouze prvni stranky hostitelskym Popplerem; verze muze byt jina nez ve Flatpaku.
+
+======================================================================
+TEST: Příklady (1).pdf | aktualni
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  20.3  0.0  3408.5  1340.4  [77047]
+0.52  182.8  94.4  3295.8  1340.4  [77047, 77061, 77063]
+1.05  185.7  97.4  3231.2  1340.4  [77047, 77061, 77063]
+1.57  197.5  100.9  3162.8  1340.4  [77047, 77061, 77063]
+2.08  243.4  101.1  3041.3  1340.4  [77047, 77061, 77063]
+2.60  245.5  98.7  3131.0  1340.4  [77047, 77061, 77063]
+3.11  250.9  100.9  3123.4  1340.4  [77047, 77061, 77063]
+3.63  245.8  110.9  3311.1  1340.4  [77047, 77061, 77063]
+4.15  245.8  3.9  3310.4  1340.4  [77047, 77061, 77063]
+4.67  245.8  0.0  3365.4  1340.4  [77047, 77061, 77063]
+5.18  245.8  0.0  3270.7  1340.4  [77047, 77061, 77063]
+5.70  245.8  0.0  3184.4  1340.4  [77047, 77061, 77063]
+6.21  245.8  0.0  3036.7  1340.4  [77047, 77061, 77063]
+6.73  245.8  0.0  3191.0  1340.4  [77047, 77061, 77063]
+7.25  245.8  0.0  2966.0  1340.4  [77047, 77061, 77063]
+7.76  245.8  0.0  3173.5  1340.4  [77047, 77061, 77063]
+8.28  245.8  0.0  3172.3  1340.3  [77047, 77061, 77063]
+8.80  245.8  0.0  3196.4  1340.3  [77047, 77061, 77063]
+9.31  245.8  0.0  3196.0  1340.3  [77047, 77061, 77063]
+9.83  245.8  0.0  3196.3  1340.3  [77047, 77061, 77063]
+10.35  245.8  0.0  3196.3  1340.3  [77047, 77061, 77063]
+10.86  245.8  0.0  3195.6  1340.3  [77047, 77061, 77063]
+11.38  245.8  0.0  3195.6  1340.3  [77047, 77061, 77063]
+11.90  245.8  0.0  3196.0  1340.3  [77047, 77061, 77063]
+12.41  245.8  0.0  3199.8  1340.3  [77047, 77061, 77063]
+12.93  245.8  0.0  3199.8  1340.3  [77047, 77061, 77063]
+13.45  245.8  0.0  3199.6  1340.3  [77047, 77061, 77063]
+13.97  245.8  0.0  3199.6  1340.3  [77047, 77061, 77063]
+14.48  245.8  0.0  3199.6  1340.3  [77047, 77061, 77063]
+15.00  245.8  0.0  3199.6  1340.3  [77047, 77061, 77063]
+15.52  245.8  0.0  3201.1  1340.3  [77047, 77061, 77063]
+16.04  246.0  1.9  3210.0  1340.3  [77047, 77061, 77063]
+16.55  246.0  0.0  3210.2  1340.3  [77047, 77061, 77063]
+17.07  246.0  0.0  3210.3  1340.3  [77047, 77061, 77063]
+17.59  246.0  0.0  3210.3  1340.3  [77047, 77061, 77063]
+18.10  246.0  0.0  3210.4  1340.2  [77047, 77061, 77063]
+18.62  246.0  0.0  3210.6  1340.2  [77047, 77061, 77063]
+19.14  246.0  0.0  3211.2  1340.2  [77047, 77061, 77063]
+19.65  246.0  0.0  3211.0  1340.2  [77047, 77061, 77063]
+20.17  246.0  0.0  3215.5  1340.2  [77047, 77061, 77063]
+20.69  246.0  0.0  3217.3  1340.2  [77047, 77061, 77063]
+21.20  246.0  0.0  3217.3  1340.2  [77047, 77061, 77063]
+21.72  246.0  0.0  3215.7  1340.2  [77047, 77061, 77063]
+22.24  246.0  0.0  3218.6  1340.2  [77047, 77061, 77063]
+22.76  246.0  0.0  3218.3  1340.2  [77047, 77061, 77063]
+23.27  246.0  0.0  3219.9  1340.2  [77047, 77061, 77063]
+23.79  246.0  0.0  3221.6  1340.2  [77047, 77061, 77063]
+24.31  246.0  0.0  3222.2  1340.2  [77047, 77061, 77063]
+24.83  246.0  0.0  3223.7  1340.2  [77047, 77061, 77063]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:32:29.839: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:32:30.146: Trying to measure GtkGridView 0x572d10a3e510 for height of 486, but it needs at least 5545
+
+
+$ journalctl --user -b --since @1792924349.727712 --until @1792924375.158432 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.009 s
+Oct 25 11:32:55.128980 pop-os systemd[3626]: app-flatpak-org.gnome.Papers-2946503664.scope: Consumed 3.757s CPU time.
+Oct 25 11:32:30.130398 pop-os systemd[3626]: Started flatpak-portal.service - flatpak portal.
+Oct 25 11:32:30.116963 pop-os systemd[3626]: Starting flatpak-portal.service - flatpak portal...
+Oct 25 11:32:29.760944 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-2946503664.scope.
+
+Peak RSS celeho stromu = 250.9 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.2 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: Příklady (1).pdf | simple_OpenGL
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=gtk-im-context-simple --env=GSK_RENDERER=gl org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  20.1  0.0  3397.9  1340.2  [77218]
+0.52  182.8  104.1  3355.7  1340.2  [77218, 77233, 77234]
+1.06  185.6  98.7  3352.4  1340.1  [77218, 77233, 77234]
+1.57  197.7  98.6  3347.8  1340.1  [77218, 77233, 77234]
+2.09  243.5  101.2  3303.4  1340.1  [77218, 77233, 77234]
+2.60  245.7  99.3  3304.0  1340.1  [77218, 77233, 77234]
+3.12  256.5  99.2  3285.1  1340.1  [77218, 77233, 77234]
+3.63  246.0  93.2  3221.0  1340.1  [77218, 77233, 77234]
+4.15  246.0  0.0  3227.2  1340.1  [77218, 77233, 77234]
+4.66  246.0  0.0  3226.3  1340.1  [77218, 77233, 77234]
+5.18  246.0  0.0  3226.3  1340.1  [77218, 77233, 77234]
+5.70  246.0  0.0  3228.2  1340.1  [77218, 77233, 77234]
+6.22  246.0  0.0  3235.9  1340.1  [77218, 77233, 77234]
+6.74  246.0  0.0  3234.7  1340.1  [77218, 77233, 77234]
+7.25  246.0  0.0  3232.2  1340.1  [77218, 77233, 77234]
+7.77  246.0  0.0  3229.1  1340.1  [77218, 77233, 77234]
+8.29  246.0  0.0  3230.4  1340.1  [77218, 77233, 77234]
+8.80  246.0  0.0  3235.8  1340.1  [77218, 77233, 77234]
+9.32  246.0  0.0  3236.6  1340.0  [77218, 77233, 77234]
+9.84  246.0  0.0  3241.1  1340.0  [77218, 77233, 77234]
+10.36  246.0  0.0  3238.9  1340.0  [77218, 77233, 77234]
+10.87  246.0  0.0  3241.3  1340.0  [77218, 77233, 77234]
+11.39  246.0  0.0  3261.0  1340.0  [77218, 77233, 77234]
+11.91  246.0  0.0  3264.1  1340.0  [77218, 77233, 77234]
+12.43  246.0  0.0  3260.5  1340.0  [77218, 77233, 77234]
+12.95  246.0  0.0  3199.4  1340.0  [77218, 77233, 77234]
+13.46  246.0  0.0  3122.0  1340.0  [77218, 77233, 77234]
+13.97  246.0  0.0  3054.0  1340.0  [77218, 77233, 77234]
+14.49  246.0  0.0  2917.5  1340.0  [77218, 77233, 77234]
+15.00  246.0  0.0  3077.7  1340.0  [77218, 77233, 77234]
+15.52  246.0  0.0  3077.4  1340.0  [77218, 77233, 77234]
+16.04  246.2  0.0  3077.7  1340.0  [77218, 77233, 77234]
+16.56  246.2  0.0  3070.1  1340.0  [77218, 77233, 77234]
+17.07  246.2  0.0  3071.5  1340.0  [77218, 77233, 77234]
+17.59  246.2  0.0  3072.7  1340.0  [77218, 77233, 77234]
+18.10  246.2  0.0  3060.2  1340.0  [77218, 77233, 77234]
+18.62  246.2  0.0  3057.1  1340.0  [77218, 77233, 77234]
+19.14  246.2  0.0  3058.5  1340.0  [77218, 77233, 77234]
+19.65  246.2  0.0  3052.3  1340.0  [77218, 77233, 77234]
+20.17  246.2  0.0  3052.3  1340.0  [77218, 77233, 77234]
+20.69  246.2  0.0  3053.6  1340.0  [77218, 77233, 77234]
+21.21  246.2  0.0  3053.6  1340.0  [77218, 77233, 77234]
+21.72  246.2  0.0  3028.2  1340.0  [77218, 77233, 77234]
+22.24  246.2  0.0  2998.4  1340.0  [77218, 77233, 77234]
+22.75  246.2  0.0  2986.3  1339.8  [77218, 77233, 77234]
+23.27  246.2  0.0  3068.0  1339.8  [77218, 77233, 77234]
+23.79  246.2  0.0  3067.9  1339.8  [77218, 77233, 77234]
+24.30  246.2  0.0  3067.9  1339.8  [77218, 77233, 77234]
+24.82  246.2  0.0  3069.1  1339.8  [77218, 77233, 77234]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:33:01.983: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:33:02.204: Trying to measure GtkGridView 0x5a34719484f0 for height of 486, but it needs at least 5545
+
+
+$ journalctl --user -b --since @1792924381.873567 --until @1792924407.266033 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.005 s
+Oct 25 11:33:27.261497 pop-os systemd[3626]: app-flatpak-org.gnome.Papers-1721909551.scope: Consumed 3.672s CPU time.
+Oct 25 11:33:01.908817 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-1721909551.scope.
+
+Peak RSS celeho stromu = 256.5 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.1 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: Příklady (1).pdf | simple_Vulkan
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=gtk-im-context-simple --env=GSK_RENDERER=vulkan org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  19.9  0.0  3192.7  1339.8  [77335]
+0.52  141.3  48.1  3168.3  1339.8  [77335, 77350, 77351]
+1.06  141.3  80.2  3168.7  1339.8  [77335, 77350, 77351]
+1.57  141.3  99.0  3168.2  1339.8  [77335, 77350, 77351]
+2.09  141.7  101.2  3246.1  1339.8  [77335, 77350, 77351]
+2.60  205.5  108.8  3320.1  1339.8  [77335, 77350, 77351]
+3.11  216.1  101.1  3288.3  1339.8  [77335, 77350, 77351]
+3.63  218.1  100.2  3286.4  1339.8  [77335, 77350, 77351]
+4.15  266.1  99.1  3171.7  1339.8  [77335, 77350, 77351]
+4.66  274.2  99.0  3254.1  1339.8  [77335, 77350, 77351]
+5.18  276.8  99.2  3262.0  1339.8  [77335, 77350, 77351]
+5.69  266.0  65.9  3258.0  1339.8  [77335, 77350, 77351]
+6.21  266.0  0.0  3214.8  1339.7  [77335, 77350, 77351]
+6.72  266.0  0.0  3219.3  1339.7  [77335, 77350, 77351]
+7.24  266.0  0.0  3219.4  1339.7  [77335, 77350, 77351]
+7.75  266.0  0.0  3171.3  1339.7  [77335, 77350, 77351]
+8.27  266.0  0.0  3267.9  1339.7  [77335, 77350, 77351]
+8.78  266.0  0.0  3269.0  1339.7  [77335, 77350, 77351]
+9.30  266.0  0.0  3265.8  1339.7  [77335, 77350, 77351]
+9.82  266.0  0.0  3265.5  1339.7  [77335, 77350, 77351]
+10.34  266.0  0.0  3267.5  1339.7  [77335, 77350, 77351]
+10.85  266.0  0.0  3230.6  1339.7  [77335, 77350, 77351]
+11.37  266.0  0.0  3265.3  1339.7  [77335, 77350, 77351]
+11.88  266.0  0.0  3209.0  1339.7  [77335, 77350, 77351]
+12.40  266.0  0.0  3317.1  1339.7  [77335, 77350, 77351]
+12.92  266.0  0.0  3344.9  1339.7  [77335, 77350, 77351]
+13.43  266.0  0.0  3344.6  1339.7  [77335, 77350, 77351]
+13.95  266.0  0.0  3340.8  1339.7  [77335, 77350, 77351]
+14.46  266.0  0.0  3324.7  1339.7  [77335, 77350, 77351]
+14.98  266.0  0.0  3295.8  1339.7  [77335, 77350, 77351]
+15.49  266.0  0.0  3263.7  1339.7  [77335, 77350, 77351]
+16.01  266.1  1.9  3275.3  1339.7  [77335, 77350, 77351]
+16.52  266.1  0.0  3337.0  1339.7  [77335, 77350, 77351]
+17.03  266.1  0.0  3337.6  1339.7  [77335, 77350, 77351]
+17.55  266.1  0.0  3337.6  1339.7  [77335, 77350, 77351]
+18.07  266.1  0.0  3349.7  1339.6  [77335, 77350, 77351]
+18.58  266.1  0.0  3346.2  1339.6  [77335, 77350, 77351]
+19.10  266.1  0.0  3344.2  1339.6  [77335, 77350, 77351]
+19.62  266.1  0.0  3345.3  1339.6  [77335, 77350, 77351]
+20.14  266.1  0.0  3345.3  1339.6  [77335, 77350, 77351]
+20.66  266.1  0.0  3345.3  1339.6  [77335, 77350, 77351]
+21.17  266.1  0.0  3345.3  1339.6  [77335, 77350, 77351]
+21.69  266.1  0.0  3344.8  1339.6  [77335, 77350, 77351]
+22.21  266.1  0.0  3345.8  1339.6  [77335, 77350, 77351]
+22.72  265.6  0.0  3110.5  1339.6  [77335, 77350, 77351]
+23.24  265.6  0.0  3110.5  1339.6  [77335, 77350, 77351]
+23.75  265.6  0.0  3110.4  1339.6  [77335, 77350, 77351]
+24.27  265.6  0.0  3109.9  1339.5  [77335, 77350, 77351]
+24.78  265.6  0.0  3112.4  1339.5  [77335, 77350, 77351]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:33:29.836: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:33:32.015: Trying to measure GtkGridView 0x62f392cb7200 for height of 486, but it needs at least 5545
+
+
+$ journalctl --user -b --since @1792924409.718005 --until @1792924437.009981 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.006 s
+Oct 25 11:33:56.989836 pop-os systemd[3626]: app-flatpak-org.gnome.Papers-822989960.scope: Consumed 6.838s CPU time.
+Oct 25 11:33:29.756910 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-822989960.scope.
+
+Peak RSS celeho stromu = 276.8 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: -0.3 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: Příklady (1).pdf | IBus_OpenGL
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=ibus --env=GSK_RENDERER=gl org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/Příklady (1).pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  19.9  0.0  3499.8  1339.5  [77479]
+0.52  182.8  106.1  3439.7  1339.5  [77479, 77494, 77495]
+1.05  185.6  95.5  3437.9  1339.5  [77479, 77494, 77495]
+1.57  197.5  99.0  3432.4  1339.5  [77479, 77494, 77495]
+2.08  243.3  103.1  3359.9  1339.4  [77479, 77494, 77495]
+2.60  245.5  98.6  3329.2  1339.4  [77479, 77494, 77495]
+3.11  256.2  99.0  3301.1  1339.4  [77479, 77494, 77495]
+3.63  245.8  103.0  3254.0  1339.4  [77479, 77494, 77495]
+4.14  245.8  0.0  3362.9  1339.4  [77479, 77494, 77495]
+4.66  245.8  0.0  3362.9  1339.4  [77479, 77494, 77495]
+5.18  245.8  0.0  3362.9  1339.4  [77479, 77494, 77495]
+5.69  245.8  0.0  3362.7  1339.4  [77479, 77494, 77495]
+6.21  245.8  0.0  3566.4  1339.4  [77479, 77494, 77495]
+6.73  245.8  0.0  3566.4  1339.4  [77479, 77494, 77495]
+7.25  245.8  0.0  3569.7  1339.4  [77479, 77494, 77495]
+7.76  245.8  0.0  3568.8  1339.4  [77479, 77494, 77495]
+8.28  245.8  0.0  3570.3  1339.4  [77479, 77494, 77495]
+8.80  245.8  1.9  3570.3  1339.4  [77479, 77494, 77495]
+9.31  245.8  0.0  3569.1  1339.4  [77479, 77494, 77495]
+9.83  245.8  0.0  3569.1  1339.4  [77479, 77494, 77495]
+10.35  245.8  0.0  3568.8  1339.4  [77479, 77494, 77495]
+10.86  245.8  0.0  3568.8  1339.4  [77479, 77494, 77495]
+11.38  245.8  0.0  3564.6  1339.4  [77479, 77494, 77495]
+11.90  245.8  0.0  3568.5  1339.4  [77479, 77494, 77495]
+12.42  245.8  0.0  3568.4  1339.4  [77479, 77494, 77495]
+12.93  245.8  0.0  3571.1  1339.4  [77479, 77494, 77495]
+13.45  245.8  0.0  3571.1  1339.4  [77479, 77494, 77495]
+13.97  245.8  0.0  3571.1  1339.4  [77479, 77494, 77495]
+14.48  245.8  0.0  3569.2  1339.4  [77479, 77494, 77495]
+15.00  245.8  0.0  3570.2  1339.4  [77479, 77494, 77495]
+15.52  245.8  0.0  3570.0  1339.4  [77479, 77494, 77495]
+16.04  246.0  0.0  3569.7  1339.4  [77479, 77494, 77495]
+16.55  246.0  0.0  3569.4  1339.4  [77479, 77494, 77495]
+17.07  246.0  0.0  3341.5  1339.4  [77479, 77494, 77495]
+17.58  246.0  0.0  3339.7  1339.4  [77479, 77494, 77495]
+18.10  246.0  0.0  3340.5  1339.4  [77479, 77494, 77495]
+18.61  246.0  0.0  3340.3  1339.4  [77479, 77494, 77495]
+19.13  246.0  0.0  3341.1  1339.4  [77479, 77494, 77495]
+19.65  246.0  0.0  3334.1  1339.4  [77479, 77494, 77495]
+20.16  246.0  0.0  3329.4  1339.4  [77479, 77494, 77495]
+20.68  246.0  0.0  3330.9  1339.4  [77479, 77494, 77495]
+21.20  246.0  0.0  3330.8  1339.4  [77479, 77494, 77495]
+21.71  246.0  0.0  3331.9  1339.4  [77479, 77494, 77495]
+22.23  246.0  0.0  3331.9  1339.4  [77479, 77494, 77495]
+22.75  246.0  0.0  3331.9  1339.4  [77479, 77494, 77495]
+23.26  246.0  0.0  3331.1  1339.4  [77479, 77494, 77495]
+23.78  246.0  0.0  3330.4  1339.4  [77479, 77494, 77495]
+24.30  246.0  0.0  3328.6  1339.4  [77479, 77494, 77495]
+24.82  246.0  0.0  3328.6  1339.4  [77479, 77494, 77495]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:34:00.545: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:34:00.768: Trying to measure GtkGridView 0x5fbe0f84d2f0 for height of 486, but it needs at least 5545
+
+
+$ journalctl --user -b --since @1792924440.434022 --until @1792924465.821349 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.007 s
+Oct 25 11:34:25.819856 pop-os systemd[3626]: app-flatpak-org.gnome.Papers-2045946961.scope: Consumed 3.723s CPU time.
+Oct 25 11:34:00.718095 pop-os systemd[3626]: dbus-:1.1-org.freedesktop.portal.IBus@10.service: Failed with result 'exit-code'.
+Oct 25 11:34:00.718079 pop-os systemd[3626]: dbus-:1.1-org.freedesktop.portal.IBus@10.service: Main process exited, code=exited, status=1/FAILURE
+Oct 25 11:34:00.717378 pop-os ibus-portal[77517]: Not connected to the ibus bus
+Oct 25 11:34:00.714070 pop-os systemd[3626]: Started dbus-:1.1-org.freedesktop.portal.IBus@10.service.
+Oct 25 11:34:00.468797 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-2045946961.scope.
+
+Peak RSS celeho stromu = 256.2 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.1 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: koa_test12.pdf | aktualni
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  19.6  0.0  3228.5  1339.3  [77636]
+0.52  186.1  71.6  3166.1  1339.3  [77636, 77651, 77652]
+1.06  186.2  0.0  3164.3  1339.3  [77636, 77651, 77652]
+1.58  186.2  0.0  3346.9  1339.3  [77636, 77651, 77652]
+2.09  186.2  0.0  3352.2  1339.3  [77636, 77651, 77652]
+2.61  186.2  0.0  3354.4  1339.3  [77636, 77651, 77652]
+3.13  186.2  0.0  3358.9  1339.3  [77636, 77651, 77652]
+3.64  186.2  0.0  3358.7  1339.3  [77636, 77651, 77652]
+4.16  186.2  0.0  3361.9  1339.3  [77636, 77651, 77652]
+4.68  186.2  0.0  3356.8  1339.3  [77636, 77651, 77652]
+5.19  186.2  0.0  3352.1  1339.3  [77636, 77651, 77652]
+5.71  186.2  0.0  3351.9  1339.3  [77636, 77651, 77652]
+6.23  186.2  0.0  3352.3  1339.3  [77636, 77651, 77652]
+6.74  186.2  0.0  3344.7  1339.3  [77636, 77651, 77652]
+7.26  186.2  0.0  3342.8  1339.3  [77636, 77651, 77652]
+7.78  186.2  0.0  3331.6  1339.3  [77636, 77651, 77652]
+8.30  186.2  0.0  3330.8  1339.3  [77636, 77651, 77652]
+8.81  186.2  0.0  3394.7  1339.3  [77636, 77651, 77652]
+9.33  186.2  0.0  3296.0  1339.3  [77636, 77651, 77652]
+9.84  186.2  0.0  3209.3  1339.3  [77636, 77651, 77652]
+10.36  186.2  0.0  3059.6  1339.2  [77636, 77651, 77652]
+10.87  186.2  0.0  3070.6  1339.2  [77636, 77651, 77652]
+11.39  186.2  0.0  3178.9  1339.2  [77636, 77651, 77652]
+11.90  186.2  0.0  3178.7  1339.2  [77636, 77651, 77652]
+12.42  186.2  0.0  3178.7  1339.2  [77636, 77651, 77652]
+12.94  186.2  0.0  3178.7  1339.2  [77636, 77651, 77652]
+13.45  186.2  0.0  3204.2  1339.2  [77636, 77651, 77652]
+13.97  186.2  1.9  3185.0  1339.2  [77636, 77651, 77652]
+14.48  186.2  0.0  3152.8  1339.2  [77636, 77651, 77652]
+15.00  186.2  0.0  3048.5  1339.2  [77636, 77651, 77652]
+15.51  186.2  0.0  3212.5  1339.2  [77636, 77651, 77652]
+16.03  186.2  0.0  3214.4  1339.2  [77636, 77651, 77652]
+16.55  186.2  0.0  3213.5  1339.2  [77636, 77651, 77652]
+17.07  186.2  0.0  3213.3  1339.2  [77636, 77651, 77652]
+17.58  186.2  0.0  3216.8  1339.2  [77636, 77651, 77652]
+18.10  186.2  0.0  3185.9  1339.2  [77636, 77651, 77652]
+18.61  186.2  0.0  3154.3  1339.2  [77636, 77651, 77652]
+19.13  186.2  0.0  3119.7  1339.2  [77636, 77651, 77652]
+19.64  186.2  0.0  3235.7  1339.2  [77636, 77651, 77652]
+20.16  186.2  0.0  3236.3  1339.2  [77636, 77651, 77652]
+20.68  186.2  0.0  3233.7  1339.2  [77636, 77651, 77652]
+21.19  186.2  0.0  3233.7  1339.2  [77636, 77651, 77652]
+21.71  186.2  0.0  3232.6  1339.2  [77636, 77651, 77652]
+22.23  186.2  0.0  3208.3  1339.2  [77636, 77651, 77652]
+22.74  186.2  0.0  3170.8  1339.2  [77636, 77651, 77652]
+23.25  186.2  0.0  3169.2  1339.2  [77636, 77651, 77652]
+23.77  186.2  0.0  3119.8  1339.2  [77636, 77651, 77652]
+24.28  186.2  0.0  3210.0  1339.2  [77636, 77651, 77652]
+24.80  186.2  0.0  3210.0  1339.2  [77636, 77651, 77652]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:34:31.698: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:34:31.920: Trying to measure GtkGridView 0x58e434ba3660 for height of 486, but it needs at least 1182
+
+
+$ journalctl --user -b --since @1792924471.588707 --until @1792924496.959960 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.006 s
+Oct 25 11:34:31.622887 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-1590915169.scope.
+
+Peak RSS celeho stromu = 186.2 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.0 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: koa_test12.pdf | simple_OpenGL
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=gtk-im-context-simple --env=GSK_RENDERER=gl org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  20.0  0.0  3147.6  1339.2  [77784]
+0.52  185.5  67.4  3238.0  1339.2  [77784, 77799, 77800]
+1.06  185.5  0.0  3236.2  1339.2  [77784, 77799, 77800]
+1.57  185.5  0.0  3238.1  1339.2  [77784, 77799, 77800]
+2.09  185.5  0.0  3440.1  1339.2  [77784, 77799, 77800]
+2.61  185.5  0.0  3440.8  1339.2  [77784, 77799, 77800]
+3.12  185.5  0.0  3386.7  1339.2  [77784, 77799, 77800]
+3.63  185.5  0.0  3296.1  1339.2  [77784, 77799, 77800]
+4.15  185.5  0.0  3246.6  1339.2  [77784, 77799, 77800]
+4.66  185.5  0.0  3089.2  1339.2  [77784, 77799, 77800]
+5.18  185.5  0.0  3233.9  1339.2  [77784, 77799, 77800]
+5.70  185.5  0.0  3233.7  1339.2  [77784, 77799, 77800]
+6.21  185.5  0.0  3232.4  1339.2  [77784, 77799, 77800]
+6.73  185.5  0.0  3229.6  1339.2  [77784, 77799, 77800]
+7.25  185.5  1.9  3227.9  1339.2  [77784, 77799, 77800]
+7.76  185.5  0.0  3180.6  1339.2  [77784, 77799, 77800]
+8.27  185.5  0.0  3162.7  1339.2  [77784, 77799, 77800]
+8.79  185.5  0.0  3185.7  1339.2  [77784, 77799, 77800]
+9.30  185.5  0.0  3238.2  1339.2  [77784, 77799, 77800]
+9.82  185.5  0.0  3237.8  1339.2  [77784, 77799, 77800]
+10.34  185.5  0.0  3237.9  1339.2  [77784, 77799, 77800]
+10.85  185.5  0.0  3237.0  1339.2  [77784, 77799, 77800]
+11.37  185.5  0.0  3218.1  1339.2  [77784, 77799, 77800]
+11.89  185.5  0.0  3192.4  1339.2  [77784, 77799, 77800]
+12.40  185.5  0.0  3153.3  1339.2  [77784, 77799, 77800]
+12.92  185.5  0.0  3152.9  1339.2  [77784, 77799, 77800]
+13.43  185.5  0.0  3058.9  1339.2  [77784, 77799, 77800]
+13.95  185.5  0.0  3199.1  1339.2  [77784, 77799, 77800]
+14.47  185.5  0.0  3199.1  1339.2  [77784, 77799, 77800]
+14.99  185.5  0.0  3199.1  1339.2  [77784, 77799, 77800]
+15.50  185.5  0.0  3198.9  1339.2  [77784, 77799, 77800]
+16.02  185.6  0.0  3198.5  1339.2  [77784, 77799, 77800]
+16.54  185.6  1.9  3183.0  1339.2  [77784, 77799, 77800]
+17.05  185.6  0.0  3145.6  1339.2  [77784, 77799, 77800]
+17.57  185.6  0.0  3144.4  1339.2  [77784, 77799, 77800]
+18.08  185.6  0.0  3094.4  1339.2  [77784, 77799, 77800]
+18.60  185.6  0.0  3198.1  1339.2  [77784, 77799, 77800]
+19.11  185.6  0.0  3199.7  1339.2  [77784, 77799, 77800]
+19.63  185.6  0.0  3198.2  1339.2  [77784, 77799, 77800]
+20.15  185.6  0.0  3197.8  1339.2  [77784, 77799, 77800]
+20.66  185.6  0.0  3197.8  1339.2  [77784, 77799, 77800]
+21.18  185.6  0.0  3173.4  1339.2  [77784, 77799, 77800]
+21.69  185.6  0.0  3162.7  1339.2  [77784, 77799, 77800]
+22.21  185.6  0.0  3161.3  1339.2  [77784, 77799, 77800]
+22.72  185.6  0.0  3112.9  1339.2  [77784, 77799, 77800]
+23.24  185.6  0.0  3210.8  1339.2  [77784, 77799, 77800]
+23.76  185.6  0.0  3210.8  1339.2  [77784, 77799, 77800]
+24.27  185.6  0.0  3211.3  1339.2  [77784, 77799, 77800]
+24.79  185.6  0.0  3204.2  1339.2  [77784, 77799, 77800]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:35:08.713: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:35:08.932: Trying to measure GtkGridView 0x59a5c1cbbee0 for height of 486, but it needs at least 1182
+
+
+$ journalctl --user -b --since @1792924508.594112 --until @1792924533.938021 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.005 s
+Oct 25 11:35:08.633916 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-1072947256.scope.
+
+Peak RSS celeho stromu = 185.6 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.1 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: koa_test12.pdf | simple_Vulkan
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=gtk-im-context-simple --env=GSK_RENDERER=vulkan org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  19.8  0.0  3260.9  1339.2  [77925]
+0.52  141.8  52.2  3233.1  1339.2  [77925, 77940, 77941]
+1.05  141.8  0.0  3223.4  1339.2  [77925, 77940, 77941]
+1.57  141.8  0.0  3227.7  1339.2  [77925, 77940, 77941]
+2.08  141.8  0.0  3341.6  1339.2  [77925, 77940, 77941]
+2.60  203.6  44.7  3399.0  1339.2  [77925, 77940, 77941]
+3.11  203.6  0.0  3379.3  1339.2  [77925, 77940, 77941]
+3.63  203.6  0.0  3377.6  1339.2  [77925, 77940, 77941]
+4.14  203.6  0.0  3440.7  1339.2  [77925, 77940, 77941]
+4.66  203.6  0.0  3442.7  1339.2  [77925, 77940, 77941]
+5.17  203.6  0.0  3442.4  1339.2  [77925, 77940, 77941]
+5.69  203.6  0.0  3648.2  1339.2  [77925, 77940, 77941]
+6.21  203.6  0.0  3648.2  1339.2  [77925, 77940, 77941]
+6.72  203.6  0.0  3621.8  1339.2  [77925, 77940, 77941]
+7.24  203.6  0.0  3536.1  1339.2  [77925, 77940, 77941]
+7.75  203.6  0.0  3471.8  1339.2  [77925, 77940, 77941]
+8.27  203.6  0.0  3412.9  1339.2  [77925, 77940, 77941]
+8.78  203.6  0.0  3329.8  1339.2  [77925, 77940, 77941]
+9.30  203.6  0.0  3431.6  1339.2  [77925, 77940, 77941]
+9.82  203.6  0.0  3442.4  1339.2  [77925, 77940, 77941]
+10.33  203.6  0.0  3442.4  1339.2  [77925, 77940, 77941]
+10.85  203.6  1.9  3443.5  1339.2  [77925, 77940, 77941]
+11.37  203.6  0.0  3431.3  1339.2  [77925, 77940, 77941]
+11.88  203.6  0.0  3389.3  1339.2  [77925, 77940, 77941]
+12.40  203.6  0.0  3373.6  1339.2  [77925, 77940, 77941]
+12.91  203.6  0.0  3375.5  1339.2  [77925, 77940, 77941]
+13.43  203.6  0.0  3427.8  1339.2  [77925, 77940, 77941]
+13.94  203.6  0.0  3427.7  1339.2  [77925, 77940, 77941]
+14.46  203.6  0.0  3428.3  1339.2  [77925, 77940, 77941]
+14.98  203.6  0.0  3640.9  1339.2  [77925, 77940, 77941]
+15.49  203.6  0.0  3641.1  1339.2  [77925, 77940, 77941]
+16.01  203.8  0.0  3620.1  1339.2  [77925, 77940, 77941]
+16.53  203.8  0.0  3494.3  1339.2  [77925, 77940, 77941]
+17.04  203.8  0.0  3456.2  1339.2  [77925, 77940, 77941]
+17.55  203.8  0.0  3322.1  1339.2  [77925, 77940, 77941]
+18.07  203.8  0.0  3465.3  1339.2  [77925, 77940, 77941]
+18.59  203.8  0.0  3465.1  1339.2  [77925, 77940, 77941]
+19.10  203.8  0.0  3465.1  1339.2  [77925, 77940, 77941]
+19.62  203.8  0.0  3465.1  1339.2  [77925, 77940, 77941]
+20.14  203.8  1.9  3466.8  1339.2  [77925, 77940, 77941]
+20.65  203.8  0.0  3435.7  1339.2  [77925, 77940, 77941]
+21.17  203.8  0.0  3396.3  1339.2  [77925, 77940, 77941]
+21.68  203.8  0.0  3391.3  1339.2  [77925, 77940, 77941]
+22.20  203.8  0.0  3343.7  1339.2  [77925, 77940, 77941]
+22.71  203.8  0.0  3204.3  1339.2  [77925, 77940, 77941]
+23.23  203.8  0.0  3204.3  1339.2  [77925, 77940, 77941]
+23.74  203.8  0.0  3201.5  1339.2  [77925, 77940, 77941]
+24.26  203.8  0.0  3201.5  1339.2  [77925, 77940, 77941]
+24.78  203.8  0.0  3201.0  1339.2  [77925, 77940, 77941]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:35:36.934: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:35:39.120: Trying to measure GtkGridView 0x5fe3092b8b10 for height of 486, but it needs at least 1182
+
+
+$ journalctl --user -b --since @1792924536.821569 --until @1792924564.106237 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.007 s
+Oct 25 11:36:04.074314 pop-os systemd[3626]: app-flatpak-org.gnome.Papers-490003338.scope: Consumed 2.145s CPU time.
+Oct 25 11:35:36.854841 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-490003338.scope.
+
+Peak RSS celeho stromu = 203.8 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.1 MiB. Toto samo nepotvrzuje memory leak.
+
+======================================================================
+TEST: koa_test12.pdf | IBus_OpenGL
+Pri testu nic neupravuj, nescrolluj ani nezoomuj.
+$ flatpak run --instance-id-fd=5 --env=GTK_IM_MODULE=ibus --env=GSK_RENDERER=gl org.gnome.Papers '/home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/koa_test12.pdf'
+t_s  RSS_MiB  CPU_pct_1core  available_MiB  swap_MiB  PIDs
+0.00  19.5  0.0  3475.8  1339.2  [78078]
+0.52  185.2  71.3  3414.4  1339.2  [78078, 78095, 78097]
+1.05  185.2  0.0  3412.3  1339.2  [78078, 78095, 78097]
+1.57  185.2  1.9  3596.9  1339.2  [78078, 78095, 78097]
+2.08  185.2  0.0  3378.9  1339.2  [78078, 78095, 78097]
+2.60  185.2  0.0  3380.4  1339.2  [78078, 78095, 78097]
+3.12  185.2  0.0  3378.0  1339.2  [78078, 78095, 78097]
+3.63  185.2  0.0  3379.8  1339.2  [78078, 78095, 78097]
+4.15  185.2  0.0  3379.6  1339.2  [78078, 78095, 78097]
+4.67  185.2  0.0  3378.7  1339.2  [78078, 78095, 78097]
+5.18  185.2  1.9  3376.9  1339.2  [78078, 78095, 78097]
+5.70  185.2  0.0  3369.1  1339.2  [78078, 78095, 78097]
+6.22  185.2  0.0  3366.1  1339.2  [78078, 78095, 78097]
+6.74  185.2  0.0  3362.7  1339.2  [78078, 78095, 78097]
+7.25  185.2  0.0  3362.4  1339.2  [78078, 78095, 78097]
+7.77  185.2  0.0  3360.4  1339.2  [78078, 78095, 78097]
+8.28  185.2  0.0  3360.3  1339.2  [78078, 78095, 78097]
+8.80  185.2  0.0  3359.4  1339.2  [78078, 78095, 78097]
+9.32  185.2  0.0  3340.1  1339.2  [78078, 78095, 78097]
+9.84  185.2  0.0  3470.3  1339.2  [78078, 78095, 78097]
+10.35  185.2  0.0  3373.3  1339.2  [78078, 78095, 78097]
+10.87  185.2  0.0  3303.0  1339.2  [78078, 78095, 78097]
+11.38  185.2  0.0  3272.8  1339.2  [78078, 78095, 78097]
+11.90  185.2  0.0  3185.7  1339.2  [78078, 78095, 78097]
+12.41  185.2  0.0  3261.3  1339.2  [78078, 78095, 78097]
+12.93  185.2  0.0  3264.7  1339.2  [78078, 78095, 78097]
+13.45  185.2  0.0  3264.7  1339.2  [78078, 78095, 78097]
+13.97  185.2  0.0  3265.5  1339.2  [78078, 78095, 78097]
+14.48  185.2  0.0  3276.4  1339.2  [78078, 78095, 78097]
+15.00  185.2  0.0  3214.4  1339.2  [78078, 78095, 78097]
+15.51  185.2  0.0  3207.8  1339.2  [78078, 78095, 78097]
+16.03  185.3  0.0  3207.5  1339.2  [78078, 78095, 78097]
+16.54  185.3  0.0  3267.9  1339.2  [78078, 78095, 78097]
+17.06  185.3  0.0  3266.8  1339.2  [78078, 78095, 78097]
+17.58  185.3  0.0  3266.9  1339.2  [78078, 78095, 78097]
+18.09  185.3  0.0  3266.2  1339.2  [78078, 78095, 78097]
+18.61  185.3  0.0  3266.2  1339.2  [78078, 78095, 78097]
+19.13  185.3  0.0  3257.1  1339.2  [78078, 78095, 78097]
+19.64  185.3  0.0  3210.6  1339.2  [78078, 78095, 78097]
+20.16  185.3  0.0  3209.2  1339.2  [78078, 78095, 78097]
+20.67  185.3  0.0  3172.8  1339.2  [78078, 78095, 78097]
+21.19  185.3  0.0  3269.9  1339.2  [78078, 78095, 78097]
+21.70  185.3  0.0  3269.9  1339.2  [78078, 78095, 78097]
+22.22  185.3  0.0  3271.7  1339.2  [78078, 78095, 78097]
+22.74  185.3  0.0  3263.7  1339.2  [78078, 78095, 78097]
+23.25  185.3  0.0  3257.1  1339.2  [78078, 78095, 78097]
+23.77  185.3  0.0  3219.7  1339.2  [78078, 78095, 78097]
+24.28  185.3  0.0  3199.7  1339.2  [78078, 78095, 78097]
+24.80  185.3  0.0  3167.8  1339.2  [78078, 78095, 78097]
+Stav procesu pred ukoncenim testu: None
+
+STDOUT/STDERR Papers:
+
+(papers:2): Gtk-WARNING **: 11:36:22.679: Unknown key gtk-modules in /home/jirkadolezal/.var/app/org.gnome.Papers/config/gtk-4.0/settings.ini
+
+(papers:2): Gtk-WARNING **: 11:36:22.916: Trying to measure GtkGridView 0x5a7f79000890 for height of 486, but it needs at least 1182
+
+
+$ journalctl --user -b --since @1792924582.566287 --until @1792924607.918719 --no-pager -o short-precise -n 120 --grep 'IBus|ibus|papers|Papers|portal|Vulkan|vulkan'
+exit=0, doba=0.006 s
+Oct 25 11:36:22.845444 pop-os systemd[3626]: dbus-:1.1-org.freedesktop.portal.IBus@11.service: Failed with result 'exit-code'.
+Oct 25 11:36:22.845435 pop-os systemd[3626]: dbus-:1.1-org.freedesktop.portal.IBus@11.service: Main process exited, code=exited, status=1/FAILURE
+Oct 25 11:36:22.844813 pop-os ibus-portal[78119]: Not connected to the ibus bus
+Oct 25 11:36:22.842002 pop-os systemd[3626]: Started dbus-:1.1-org.freedesktop.portal.IBus@11.service.
+Oct 25 11:36:22.602883 pop-os systemd[3626]: Started app-flatpak-org.gnome.Papers-605979416.scope.
+
+Peak RSS celeho stromu = 185.3 MiB; sdilena pamet muze byt zapoctena vicekrat.
+Zmena RSS v druhe polovine: +0.1 MiB. Toto samo nepotvrzuje memory leak.
+
+=== SOUHRN ===
+Příklady (1).pdf | aktualni | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 250.9 MiB | exit pred ukoncenim None
+Příklady (1).pdf | simple_OpenGL | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 256.5 MiB | exit pred ukoncenim None
+Příklady (1).pdf | simple_Vulkan | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 276.8 MiB | exit pred ukoncenim None
+Příklady (1).pdf | IBus_OpenGL | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 256.2 MiB | exit pred ukoncenim None
+koa_test12.pdf | aktualni | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 186.2 MiB | exit pred ukoncenim None
+koa_test12.pdf | simple_OpenGL | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 185.6 MiB | exit pred ukoncenim None
+koa_test12.pdf | simple_Vulkan | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 203.8 MiB | exit pred ukoncenim None
+koa_test12.pdf | IBus_OpenGL | potvrzena stranka nezmereno | proces 0.52 s | peak RSS 185.3 MiB | exit pred ukoncenim None
+
+INTERPRETACE:
+IBus_OpenGL vs simple_OpenGL meni pouze vstupni modul. simple_OpenGL vs simple_Vulkan meni pouze renderer.
+Aktualni varianta dedi existujici nastaveni a muze byt shodna s jinou variantou.
+Proces existuje != stranka vykreslena. CPU se meri z rozdilu /proc; 100 % = jedno jadro.
+Zadny kratky rust RSS nedokazuje leak. Cache, GPU pamet a sdilene stranky mohou vysledky ovlivnit.
+Prvni otevreni muze byt pomalejsi kvuli cache. Cache OS se nemaze. Pro kontrolu poradi pouzij --rounds 2.
+Pokud nebyl Enter, neni to dukaz timeoutu vykresleni. Okno mohlo byt prekryte.
+
+$ free -h
+exit=0, doba=0.003 s
+               total        used        free      shared  buff/cache   available
+Mem:            14Gi        11Gi       1.3Gi       324Mi       3.4Gi       3.3Gi
+Swap:           14Gi       1.3Gi        13Gi
+
+
+TXT ulozen: /home/jirkadolezal/Documents/CVUT OI/magistr/1 semestr/KO/papers_diagnostika_20261025_113143_671681.txt
