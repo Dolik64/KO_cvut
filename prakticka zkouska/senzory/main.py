@@ -3,6 +3,7 @@ import sys
 
 with open (sys.argv[1], "r") as f:
     h, w, b = map(int, f.readline().split())
+    J = int(f.readline())
     
     
     stroje = []
